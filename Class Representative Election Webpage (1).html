@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Namakshara Nandith Nambalath | Class Representative Campaign</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#8B0000',
+                        brandGold: '#D4AF37',
+                        darkBg: '#08080c',
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #08080c;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Hero Background with User Photo backdrop overlay */
+        .hero-bg {
+            background-image: linear-gradient(180deg, rgba(8, 8, 12, 0.75) 0%, rgba(8, 8, 12, 0.95) 75%, #08080c 100%), url('23575.png');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+        }
+
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(20, 20, 28, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Golden Gradient Text Effect */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF8DC 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glowing Button Effect */
+        .glow-btn {
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+        .glow-btn:hover {
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.8);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brandGold selection:text-black">
+
+    <!-- Hero Section -->
+    <header class="relative w-full hero-bg min-h-screen flex flex-col justify-center items-center text-center px-4 py-8">
+        
+        <!-- Top Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-brandGold/30 text-brandGold text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 shadow-lg animate-pulse">
+            <i class="fa-solid fa-check-to-slot"></i> Class Representative Candidate
+        </div>
+
+        <div class="max-w-4xl mx-auto flex flex-col items-center w-full">
+            
+            <!-- Quote Header -->
+            <h1 class="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl tracking-tight leading-tight uppercase px-2 drop-shadow-md">
+                "Trust in <span class="gold-gradient-text">Namakshara Nandith Nambalath</span> as your class representative"
+            </h1>
+
+            <!-- Video Section replacing the image, spanning full phone screen width -->
+            <div class="w-full max-w-md my-5 px-0 sm:px-2 flex flex-col items-center">
+                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-brandGold/30 bg-black group">
+                    <!-- Glow effect container -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-amber-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500 -z-10"></div>
+                    
+                    <!-- Video Element with autoplay & playsinline -->
+                    <video 
+                        id="campaignVideo"
+                        src="min.mp4" 
+                        class="w-full h-auto object-cover rounded-2xl block"
+                        autoplay 
+                        loop 
+                        playsinline
+                        muted
+                        onplay="handleVideoPlay()"
+                    ></video>
+
+                    <!-- Unmute Overlay / Audio Prompt for Browsers that block autoplay with sound -->
+                    <div id="audioPrompt" onclick="toggleAudio()" class="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer opacity-100 transition-opacity duration-300">
+                        <div class="w-14 h-14 rounded-full bg-brandGold text-black flex items-center justify-center text-xl shadow-lg mb-2 animate-bounce">
+                            <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-white bg-black/60 px-3 py-1 rounded-full border border-brandGold/30">Tap to Enable Sound &amp; Play</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary Action Buttons -->
+            <div class="w-full max-w-md flex flex-col sm:flex-row gap-3 px-2">
+                <button onclick="pledgeVote()" class="w-full glow-btn bg-gradient-to-r from-red-900 via-brandRed to-amber-600 text-white font-heading font-bold text-base py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition">
+                    <i class="fa-solid fa-thumbs-up"></i> Vote For Namakshara
+                </button>
+                <button onclick="shareCampaign()" class="w-full glass-card hover:bg-white/10 text-white font-heading font-semibold text-base py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 border border-white/20 transition">
+                    <i class="fa-solid fa-share-nodes text-brandGold"></i> Share Campaign
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Key Vision / Campaign Pillars -->
+    <section id="vision" class="py-14 px-4 bg-gradient-to-b from-[#08080c] via-[#0d0d14] to-[#08080c]">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-10">
+                <span class="text-brandGold font-semibold text-xs sm:text-sm tracking-widest uppercase">Pillars of Representation</span>
+                <h2 class="font-heading font-bold text-2xl sm:text-3xl mt-1 text-white">Why Namakshara?</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-red-600 to-amber-400 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- Pillar 1 -->
+                <div class="glass-card p-5 rounded-2xl hover:border-brandGold/50 transition duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-red-900/40 border border-red-500/30 flex items-center justify-center text-red-400 text-lg mb-3">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-white mb-1">Strong Voice</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Unapologetic, firm, and transparent communication with faculty to ensure class opinions are heard first.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="glass-card p-5 rounded-2xl hover:border-brandGold/50 transition duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-amber-900/40 border border-amber-500/30 flex items-center justify-center text-brandGold text-lg mb-3">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-white mb-1">Class Unity</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Fostering inclusive decisions, peer support systems, and building an environment where everyone thrives.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="glass-card p-5 rounded-2xl hover:border-brandGold/50 transition duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-red-900/40 border border-red-500/30 flex items-center justify-center text-red-400 text-lg mb-3">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-white mb-1">Action &amp; Results</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Swift resolution for academic schedules, event coordination, and resource allocation without delays.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Voter Pledge Toast/Modal -->
+    <div id="pledgeModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-sm w-full p-6 rounded-2xl border border-brandGold/40 text-center relative animate-fade-in">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="w-16 h-16 bg-brandGold/20 rounded-full flex items-center justify-center mx-auto text-brandGold text-3xl mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-white">Thank You!</h3>
+            <p class="text-gray-300 text-sm mt-2">Your trust and support make our class stronger. Don't forget to cast your vote for <strong>Namakshara</strong> on election day!</p>
+            <button onclick="closeModal()" class="mt-6 w-full bg-gradient-to-r from-red-800 to-amber-600 text-white font-bold py-3 rounded-xl hover:opacity-90 transition">
+                Back to Campaign
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 glass-card border border-brandGold/30 text-white px-5 py-3 rounded-xl shadow-2xl hidden items-center gap-3 z-50">
+        <i class="fa-solid fa-circle-check text-brandGold"></i>
+        <span id="toastMsg" class="text-sm">Link copied to clipboard!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-xs text-gray-500 border-t border-white/5 bg-[#050508]">
+        <p>© 2026 Campaign for Namakshara Nandith Nambalath | Class Representative Election</p>
+        <p class="mt-1 text-gray-600">Built for Strength &amp; Unity</p>
+    </footer>
+
+    <script>
+        const video = document.getElementById('campaignVideo');
+        const audioPrompt = document.getElementById('audioPrompt');
+        const audioIcon = document.getElementById('audioIcon');
+
+        // Attempt autoplay immediately
+        window.addEventListener('DOMContentLoaded', () => {
+            video.play().then(() => {
+                // If browser allowed autoplay muted, keep it muted initially until user taps prompt
+            }).catch(error => {
+                console.log("Autoplay prevented:", error);
+            });
+        });
+
+        function toggleAudio() {
+            if (video.muted) {
+                video.muted = false;
+                video.play();
+                audioPrompt.style.opacity = '0';
+                setTimeout(() => {
+                    audioPrompt.style.display = 'none';
+                }, 300);
+            } else {
+                video.muted = true;
+                audioIcon.className = "fa-solid fa-volume-xmark";
+            }
+        }
+
+        function handleVideoPlay() {
+            // Video is playing successfully
+        }
+
+        function pledgeVote() {
+            document.getElementById('pledgeModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('pledgeModal').classList.add('hidden');
+        }
+
+        function shareCampaign() {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
